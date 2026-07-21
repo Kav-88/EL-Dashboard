@@ -233,7 +233,7 @@ function calc(){
 }
 
 function radarSVG(ds){
-  var cx=150,cy=140,r=105,n=ds.length;var out='';
+  var cx=170,cy=145,r=95,n=ds.length;var out='';
   [0.25,0.5,0.75,1].forEach(function(f){
     var pts=[];for(var i=0;i<n;i++){var a=Math.PI*2*i/n-Math.PI/2;pts.push((cx+r*f*Math.cos(a)).toFixed(1)+','+(cy+r*f*Math.sin(a)).toFixed(1))}
     out+='<polygon points="'+pts.join(' ')+'" fill="none" stroke="'+C.wa+'" stroke-width="1"/>';
@@ -248,7 +248,7 @@ function radarSVG(ds){
     out+='<text x="'+lx.toFixed(1)+'" y="'+(ly+4).toFixed(1)+'" text-anchor="'+anc+'" font-size="10" fill="'+C.gr+'" font-weight="500">'+d.name+'</text>';
     out+='<text x="'+lx.toFixed(1)+'" y="'+(ly+16).toFixed(1)+'" text-anchor="'+anc+'" font-size="10" fill="'+C.dk+'" font-weight="600">'+d.score+'%</text>';
   });
-  return'<svg viewBox="0 0 300 290" width="100%">'+out+'</svg>'
+  var cx=170,cy=145,r=95,n=ds.length;var out='';
 }
 
 function pieSVG(lb){
