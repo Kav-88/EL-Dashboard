@@ -339,7 +339,7 @@ function printScoresHTML(m){
 function printInsightsHTML(){
   var ins=S.insights;
   function ul(arr){return'<ul>'+arr.filter(function(x){return x.trim()}).map(function(x){return'<li>'+x+'</li>'}).join('')+'</ul>'}
-  return'<div class="print-page-break print-insights"><div class="p2-head"><span>'+S.companyTag+' | Qualitative Insights &amp; Recommendations</span><small>'+(S.client||'Client')+'  |  '+S.date+'</small></div>'
+  return'<div class="print-page-break print-insights"><div class="p2-head"><span>'+S.companyTag+' | Key Insights &amp; Recommendations</span><small>'+(S.client||'Client')+'  |  '+S.date+'</small></div>'
   +'<h4>Executive summary</h4><p>'+(ins.summary||'-')+'</p>'
   +'<h4>Key strengths</h4>'+ul(ins.strengths)
   +'<h4>Key risks &amp; gaps</h4>'+ul(ins.risks)
