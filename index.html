@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evolve Labs | Executive AI ROI Dashboard</title>
+<title>Evolve Labs | AI Maturity & Value Diagnostic</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Serif+Display&display=swap');
-:root{--gd:#0A3622;--gm:#1B6B4F;--gl:#2D9B6E;--fu:#C2185B;--fl:#F8E1EC;--na:#F7F5F0;--wa:#E8E2D8;--dk:#1A1A1A;--gr:#6B7280;--wh:#FFFFFF;--am:#D97706;--yl:#F59E0B}
+:root{--gd:#0A3622;--gm:#1B6B4F;--gl:#2D9B6E;--fu:#C2185B;--fl:#F8E1EC;--na:#F7F5F0;--wa:#E8E2D8;--dk:#1A1A1A;--gr:#6B7280;--wh:#FFFFFF;--am:#D97706;--yl:#F59E0B;--bl:#2563EB;--pu:#7C3AED}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--na);color:var(--dk);min-height:100vh}
 [contenteditable]{outline:none;cursor:text;border-radius:4px;transition:background 0.2s}
 [contenteditable]:hover{background:rgba(255,255,255,0.15)}
 [contenteditable]:focus{background:rgba(255,255,255,0.25);box-shadow:0 0 0 2px rgba(45,155,110,0.4)}
-.app{max-width:1100px;margin:0 auto;padding:24px}
+.app{max-width:1150px;margin:0 auto;padding:24px}
 .hdr{background:var(--gd);border-radius:14px;padding:24px 32px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center}
 .hdr-left .eyebrow{color:var(--gl);font-size:11px;font-weight:600;letter-spacing:3px}
 .hdr-left h1{color:var(--wh);font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;margin-top:4px}
@@ -26,8 +26,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--na);color:var(-
 .logo-upload-btn{background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.3);border-radius:8px;padding:8px 14px;color:var(--gl);font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
 .logo-upload-btn:hover{background:rgba(255,255,255,0.2);border-color:var(--gl)}
 .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
-.tabs{display:flex;gap:4px;background:var(--wh);border-radius:10px;padding:4px;border:1px solid var(--wa)}
-.tab{padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;border-radius:7px;border:none;background:transparent;color:var(--gr);font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.tabs{display:flex;gap:4px;background:var(--wh);border-radius:10px;padding:4px;border:1px solid var(--wa);flex-wrap:wrap}
+.tab{padding:8px 16px;font-size:13px;font-weight:500;cursor:pointer;border-radius:7px;border:none;background:transparent;color:var(--gr);font-family:'DM Sans',sans-serif;transition:all 0.2s;white-space:nowrap}
 .tab.on{background:var(--gd);color:var(--wh)}
 .tab:hover:not(.on){background:var(--na)}
 .btns{display:flex;gap:8px}
@@ -44,7 +44,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--na);color:var(-
 .card{background:var(--wh);border-radius:12px;padding:20px;border:1px solid var(--wa)}
 .card h3{font-size:14px;font-weight:600;margin-bottom:14px}
 .dbar{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.dbar-n{width:70px;font-size:11px;color:var(--gr);text-align:right;font-weight:500}
+.dbar-n{width:130px;font-size:11px;color:var(--gr);text-align:right;font-weight:500}
 .dbar-t{flex:1;height:22px;background:var(--na);border-radius:6px;overflow:hidden}
 .dbar-f{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;transition:width 0.4s ease;min-width:2%}
 .dbar-f span{font-size:10px;font-weight:600;color:var(--wh)}
@@ -59,11 +59,13 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--na);color:var(-
 .dhdr{padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s}
 .dhdr:hover{background:var(--na)}.dhdr.exp{background:var(--gd);color:var(--wh)}
 .dhdr-t{font-size:15px;font-weight:600}.dhdr-s{font-size:12px;opacity:0.7}
+.dhdr-w{font-size:10px;opacity:0.6;margin-left:8px}
 .dhdr.exp .dhdr-s{color:var(--gl)}
+.dhdr-desc{padding:10px 20px;font-size:11px;color:var(--gr);background:var(--na);border-top:1px solid var(--wa)}
 .dbody{border-top:1px solid var(--wa)}
 .drow{display:flex;align-items:center;padding:10px 20px;border-bottom:1px solid var(--na);gap:12px}
 .drow:last-child{border-bottom:none}
-.drow-n{flex:1;font-size:13px}.drow-w{font-size:10px;color:#9CA3AF;width:40px;text-align:center}
+.drow-n{flex:1;font-size:13px}
 .sbtn{display:flex;gap:3px}
 .sb{width:30px;height:30px;border-radius:6px;border:none;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.15s}
 .sb:hover{transform:scale(1.1)}
@@ -77,14 +79,35 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--na);color:var(-
 .linp:focus{outline:none;border-color:var(--gm)}
 .ltot{background:var(--fl);border-radius:12px;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .ltot-l{font-size:15px;font-weight:600}.ltot-v{font-size:26px;font-weight:700;color:var(--fu);font-family:'DM Serif Display',serif}
-.indir{padding:14px 20px;background:var(--na);border-radius:12px;margin-bottom:14px;font-size:12px;color:var(--gr)}
 .hint{font-size:12px;color:var(--gr);margin-bottom:16px}
 .foot{text-align:center;padding:16px 0;border-top:1px solid var(--wa);margin-top:20px;font-size:10px;color:var(--gr);letter-spacing:1px}
 svg text{font-family:'DM Sans',sans-serif}
 .chart-empty{text-align:center;padding:50px 20px;color:var(--gr);font-size:13px}
 
+/* Maturity journey */
+.journey{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.jstage{flex:1;min-width:200px;background:var(--wh);border:2px solid var(--wa);border-radius:12px;padding:16px;position:relative;transition:all 0.2s}
+.jstage.active{box-shadow:0 4px 14px rgba(0,0,0,0.08)}
+.jstage h4{font-size:14px;margin-bottom:8px;font-weight:700}
+.jstage ul{margin:0;padding-left:16px;font-size:11px;color:var(--gr);line-height:1.5}
+.jstage li{margin-bottom:4px}
+.jtag{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;white-space:nowrap}
+
+/* Insights */
+.ins-card{background:var(--wh);border:1px solid var(--wa);border-radius:12px;padding:20px;margin-bottom:14px}
+.ins-card h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.ins-sub{font-size:11px;color:var(--gr);margin-bottom:12px}
+.ins-summary{min-height:70px;padding:12px;border:1px solid var(--wa);border-radius:8px;font-size:13px;line-height:1.6}
+.ins-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.ins-list-item{display:flex;align-items:flex-start;gap:6px;margin-bottom:8px}
+.ili-text{flex:1;padding:8px 10px;border:1px solid var(--wa);border-radius:6px;font-size:12px;min-height:18px;line-height:1.4}
+.ins-rm{background:none;border:none;color:#B0B7C0;cursor:pointer;font-size:15px;padding:2px 4px;line-height:1}
+.ins-rm:hover{color:var(--fu)}
+.ins-add{background:var(--na);border:1px dashed var(--wa);border-radius:6px;padding:6px 12px;font-size:11px;color:var(--gr);cursor:pointer;width:100%}
+.ins-add:hover{background:var(--wa)}
+
 /* Print-only scoring table */
-.print-scores{display:none}
+.print-scores,.print-insights{display:none}
 .print-scores table{width:100%;border-collapse:collapse;font-size:10px}
 .print-scores th{background:var(--gd);color:var(--wh);padding:6px 8px;text-align:left;font-weight:600}
 .print-scores td{padding:5px 8px;border-bottom:1px solid var(--wa)}
@@ -95,6 +118,9 @@ svg text{font-family:'DM Sans',sans-serif}
 .p2-head{background:var(--gd);border-radius:10px;padding:14px 20px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
 .p2-head span{color:var(--wh);font-size:14px;font-weight:600}
 .p2-head small{color:var(--gl);font-size:11px}
+.print-insights h4{font-size:12px;font-weight:700;margin:12px 0 6px}
+.print-insights p{font-size:10px;line-height:1.5;color:var(--dk)}
+.print-insights ul{font-size:10px;margin-left:16px;line-height:1.6}
 
 @media print{
   body{background:white!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
@@ -103,8 +129,6 @@ svg text{font-family:'DM Sans',sans-serif}
   .toolbar,.btns,.tabs,.logo-upload-btn{display:none!important}
   [contenteditable]{cursor:default}
   [contenteditable]:hover,[contenteditable]:focus{background:transparent!important;box-shadow:none!important}
-
-  /* Page 1 */
   .hdr{border-radius:8px;padding:14px 20px;margin-bottom:10px}
   .hdr-left h1{font-size:20px}
   .hdr-input{font-size:12px;padding:4px 10px;width:160px}
@@ -114,11 +138,16 @@ svg text{font-family:'DM Sans',sans-serif}
   .kpi-l{font-size:9px;margin-bottom:3px}
   .kpi-v{font-size:22px}
   .kpi-s{font-size:9px;margin-top:2px}
+  .journey{gap:6px;margin-bottom:10px}
+  .jstage{padding:8px;border-radius:8px}
+  .jstage h4{font-size:10px;margin-bottom:4px}
+  .jstage ul{font-size:8px}
+  .jtag{font-size:8px;padding:2px 8px;bottom:-8px}
   .grid2{gap:8px;margin-bottom:10px}
   .card{padding:10px 14px;border-radius:8px}
   .card h3{font-size:11px;margin-bottom:8px}
   .dbar{margin-bottom:5px;gap:6px}
-  .dbar-n{font-size:9px;width:55px}
+  .dbar-n{font-size:9px;width:95px}
   .dbar-t{height:16px}
   .dbar-f span{font-size:8px}
   .opp{padding:5px 0}
@@ -129,16 +158,11 @@ svg text{font-family:'DM Sans',sans-serif}
   .sum-l{font-size:8px}
   .sum-v{font-size:13px}
   .foot{display:none}
-
-  /* Force page break before page 2 */
   .print-page-break{page-break-before:always;margin-top:0!important;padding-top:0!important}
-
-  /* Show print scoring table on page 2 */
   .print-scores{display:block!important}
+  .print-insights{display:block!important}
   .p2-head{border-radius:8px;padding:10px 16px;margin-bottom:10px}
-
-  /* Hide interactive tabs content on print */
-  .scores-screen,.leakage-screen{display:none!important}
+  .scores-screen,.value-screen,.insights-screen{display:none!important}
 }
 
 @media(max-width:768px){
@@ -147,6 +171,8 @@ svg text{font-family:'DM Sans',sans-serif}
   .sumbar{grid-template-columns:repeat(2,1fr)}
   .hdr{flex-direction:column;gap:16px}
   .hdr-right{align-items:flex-start}
+  .journey{flex-direction:column}
+  .ins-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -155,81 +181,97 @@ svg text{font-family:'DM Sans',sans-serif}
 <input type="file" id="logoFile" accept="image/*" style="display:none">
 <script>
 (function(){
-var C={gd:'#0A3622',gm:'#1B6B4F',gl:'#2D9B6E',fu:'#C2185B',fl:'#F8E1EC',na:'#F7F5F0',wa:'#E8E2D8',dk:'#1A1A1A',gr:'#6B7280',wh:'#FFFFFF',am:'#D97706',yl:'#F59E0B'};
+var C={gd:'#0A3622',gm:'#1B6B4F',gl:'#2D9B6E',fu:'#C2185B',fl:'#F8E1EC',na:'#F7F5F0',wa:'#E8E2D8',dk:'#1A1A1A',gr:'#6B7280',wh:'#FFFFFF',am:'#D97706',yl:'#F59E0B',bl:'#2563EB',pu:'#7C3AED'};
+
+var STAGES=[
+  {name:'Emerging',color:C.fu,bullets:['AI use is ad hoc and isolated, with no formal rollout','No consistent process, measurement, or ownership yet','Foundations still need building, which is normal this early']},
+  {name:'Developing',color:C.am,bullets:['AI is piloted and adopted in parts of the business','Spend is climbing, but the return on it remains unproven','Unmeasured momentum quietly turns into wasted investment']},
+  {name:'Scaling',color:C.yl,bullets:['AI is deployed across multiple functions with defined standards','At this size, scale multiplies both the returns and the hidden losses','What you cannot measure now is what will cost you most']},
+  {name:'Optimised',color:C.gm,bullets:['AI is embedded enterprise-wide, with automation as the default','Performing well across every dimension, including the most demanding','Focus shifts to sustaining performance and staying ahead']}
+];
 
 var S={
   domains:[
-    {name:"AI Maturity",short:"AI",type:"direct",dims:[
-      {name:"AI strategy alignment",w:8,sc:0,lk:0},
-      {name:"Initiative tracking & governance",w:6,sc:0,lk:0},
-      {name:"Tool adoption rate",w:9,sc:0,lk:0},
-      {name:"Integration depth",w:7,sc:0,lk:0}
+    {name:"Technology & AI Adoption",short:"Tech & AI Adoption",weight:30,color:C.gm,
+     desc:"Ranges from ad-hoc/experimental use in isolated tools, through piloted use with basic governance, to multi-function deployment, to enterprise-wide embedding with robust governance and continuous optimisation.",
+     dims:[
+      {name:"Breadth of AI tool adoption",sc:0,lk:0},
+      {name:"AI governance & standards",sc:0,lk:0},
+      {name:"Integration & automation depth",sc:0,lk:0},
+      {name:"Enterprise-wide embedding",sc:0,lk:0}
     ]},
-    {name:"ROI Measurement",short:"ROI",type:"indirect",dims:[
-      {name:"Defined KPIs for AI",w:9,sc:0,lk:0},
-      {name:"Baseline data availability",w:7,sc:0,lk:0},
-      {name:"Attribution methodology",w:6,sc:0,lk:0},
-      {name:"Executive ROI reporting",w:5,sc:0,lk:0}
+    {name:"Process & Workflows",short:"Process & Workflows",weight:22,color:C.gl,
+     desc:"How well AI is integrated into real operational workflows, as opposed to sitting alongside them.",
+     dims:[
+      {name:"Workflow integration depth",sc:0,lk:0},
+      {name:"Process documentation & standardisation",sc:0,lk:0},
+      {name:"Automation of manual tasks",sc:0,lk:0},
+      {name:"Cross-functional embedding",sc:0,lk:0}
     ]},
-    {name:"Process Efficiency",short:"Process",type:"direct",dims:[
-      {name:"Process documentation",w:6,sc:0,lk:0},
-      {name:"Manual work prevalence",w:8,sc:0,lk:0},
-      {name:"Cycle time performance",w:7,sc:0,lk:0},
-      {name:"Error / rework rate",w:8,sc:0,lk:0},
-      {name:"Handoff efficiency",w:5,sc:0,lk:0}
+    {name:"Measurement Maturity",short:"Measurement Maturity",weight:18,color:C.am,
+     desc:"Whether the organisation has a clear definition of success and is actually measuring against it - distinct from knowing what 'good' looks like versus tracking it.",
+     dims:[
+      {name:"Defined success metrics / KPIs",sc:0,lk:0},
+      {name:"Active tracking against KPIs",sc:0,lk:0},
+      {name:"Baseline & benchmark data",sc:0,lk:0},
+      {name:"Reporting cadence to leadership",sc:0,lk:0}
     ]},
-    {name:"Cost Leakage",short:"Cost",type:"direct",dims:[
-      {name:"Unused software licences",w:9,sc:0,lk:0},
-      {name:"Duplicate tools",w:7,sc:0,lk:0},
-      {name:"Abandoned project spend",w:6,sc:0,lk:0},
-      {name:"Maintenance vs innovation ratio",w:5,sc:0,lk:0}
+    {name:"People",short:"People",weight:14,color:C.fu,
+     desc:"Executive sponsorship and buy-in, plus adoption/uptake from the people actually using the tools day to day.",
+     dims:[
+      {name:"Executive sponsorship & buy-in",sc:0,lk:0},
+      {name:"Change management investment",sc:0,lk:0},
+      {name:"Day-to-day user adoption",sc:0,lk:0},
+      {name:"AI literacy & training",sc:0,lk:0}
     ]},
-    {name:"Revenue Leakage",short:"Revenue",type:"direct",dims:[
-      {name:"Pricing optimisation",w:9,sc:0,lk:0},
-      {name:"Customer retention analytics",w:8,sc:0,lk:0},
-      {name:"Sales funnel conversion",w:7,sc:0,lk:0},
-      {name:"Demand forecasting",w:6,sc:0,lk:0},
-      {name:"Cross-sell / upsell",w:5,sc:0,lk:0}
+    {name:"ROI / Value Realisation",short:"ROI / Value",weight:10,color:C.bl,
+     desc:"Whether the organisation is realising and tracking business value from AI - revenue growth or cost savings, depending on what ROI means for that organisation.",
+     dims:[
+      {name:"Revenue impact tracked",sc:0,lk:0},
+      {name:"Cost savings tracked",sc:0,lk:0},
+      {name:"Value attribution methodology",sc:0,lk:0}
     ]},
-    {name:"Adoption & Change",short:"Change",type:"indirect",dims:[
-      {name:"Executive sponsorship",w:8,sc:0,lk:0},
-      {name:"Change management investment",w:7,sc:0,lk:0},
-      {name:"Staff AI literacy",w:6,sc:0,lk:0},
-      {name:"Incentive alignment",w:5,sc:0,lk:0}
-    ]},
-    {name:"Data & Infrastructure",short:"Data",type:"indirect",dims:[
-      {name:"Data quality",w:9,sc:0,lk:0},
-      {name:"Data integration",w:8,sc:0,lk:0},
-      {name:"Governance & POPIA",w:7,sc:0,lk:0},
-      {name:"Core system modernity",w:5,sc:0,lk:0}
+    {name:"Customer Impact",short:"Customer Impact",weight:6,color:C.pu,
+     desc:"Effect on customer experience/value. Lightest weight at this self-assessment stage - more relevant once a client moves into the full paid Diagnostic. Not every project has a customer-facing component.",
+     dims:[
+      {name:"Customer experience improvement",sc:0,lk:0},
+      {name:"Customer-facing AI use cases",sc:0,lk:0},
+      {name:"Customer feedback / NPS impact",sc:0,lk:0}
     ]}
   ],
   tab:'dashboard',exp:null,client:'',date:new Date().toISOString().split('T')[0],logo:null,
-  companyTag:'EVOLVE LABS',dashTitle:'Executive AI ROI Dashboard',footNote:'Value Leakage Diagnostic  |  Confidential'
+  companyTag:'EVOLVE LABS',dashTitle:'AI Maturity & Value Diagnostic',footNote:'AI Maturity Diagnostic  |  Confidential',
+  insights:{
+    summary:'',
+    strengths:[''],
+    risks:[''],
+    quickWins:[''],
+    midTerm:[''],
+    strategic:['']
+  }
 };
 
 function fR(v){if(v>=1e6)return'R'+(v/1e6).toFixed(1)+'M';if(v>=1e3)return'R'+(v/1e3).toFixed(0)+'k';return'R'+v}
 function sCol(s){return s<=1?C.fu:s<=2?C.am:s<=3?C.yl:s<=4?C.gl:C.gm}
-function bCol(p){return p<30?C.fu:p<50?C.am:p<70?C.yl:C.gm}
-function mLbl(p){return p<20?'Ad Hoc':p<40?'Emerging':p<60?'Defined':p<80?'Managed':'Optimised'}
+function stageIdx(mat){return mat<25?0:mat<50?1:mat<75?2:3}
 
 function calc(){
-  var tw=0,tmw=0,tl=0,cl=0,rl=0,pl=0,al=0;
+  var tw=0,tl=0;
   var ds=S.domains.map(function(d){
-    var dw=0,dm=0,dl=0;
-    d.dims.forEach(function(x){dw+=x.w*x.sc;dm+=x.w*5;dl+=x.lk});
-    tw+=dw;tmw+=dm;tl+=dl;
-    if(d.name==='Cost Leakage')cl=dl;if(d.name==='Revenue Leakage')rl=dl;
-    if(d.name==='Process Efficiency')pl=dl;if(d.name==='AI Maturity')al=dl;
-    return{name:d.short,full:d.name,score:dm>0?Math.round(dw/dm*100):0,lk:dl}
+    var sum=0,cnt=d.dims.length,dl=0;
+    d.dims.forEach(function(x){sum+=x.sc;dl+=x.lk});
+    tl+=dl;
+    var pct=cnt>0?Math.round(sum/(cnt*5)*100):0;
+    tw+=d.weight*pct;
+    return{name:d.short,full:d.name,score:pct,lk:dl,weight:d.weight,color:d.color}
   });
-  var mat=tmw>0?tw/tmw*100:0;
-  var lb=[{n:'Revenue',v:rl,c:C.fu},{n:'Cost',v:cl,c:C.am},{n:'Process',v:pl,c:C.gm},{n:'AI/Tech',v:al,c:C.gl}].filter(function(x){return x.v>0});
-  var ad=[];S.domains.forEach(function(d){d.dims.forEach(function(x){ad.push({name:x.name,domain:d.name,sc:x.sc,lk:x.lk})})});
+  var mat=Math.round(tw/100);
+  var lb=ds.filter(function(x){return x.lk>0}).map(function(x){return{n:x.name,v:x.lk,c:x.color}});
+  var ad=[];S.domains.forEach(function(d){d.dims.forEach(function(x){ad.push({name:x.name,domain:d.name,sc:x.sc,lk:x.lk,weight:d.weight})})});
   var qw=ad.filter(function(x){return x.sc>0&&x.sc<=2&&x.lk>0}).sort(function(a,b){return b.lk-a.lk}).slice(0,6);
   var dc=S.domains.reduce(function(s,d){return s+d.dims.length},0);
   var sc=ad.filter(function(x){return x.sc>0}).length;
-  return{mat:mat,tl:tl,cl:cl,rl:rl,ds:ds,lb:lb,qw:qw,dc:dc,sc:sc}
+  return{mat:mat,tl:tl,ds:ds,lb:lb,qw:qw,dc:dc,sc:sc}
 }
 
 function radarSVG(ds){
@@ -243,16 +285,16 @@ function radarSVG(ds){
   out+='<polygon points="'+pts.join(' ')+'" fill="rgba(27,107,79,0.18)" stroke="'+C.gm+'" stroke-width="2.5"/>';
   ds.forEach(function(d,i){var a=Math.PI*2*i/n-Math.PI/2;var v=d.score/100;out+='<circle cx="'+(cx+r*v*Math.cos(a)).toFixed(1)+'" cy="'+(cy+r*v*Math.sin(a)).toFixed(1)+'" r="4" fill="'+C.gm+'"/>'});
   ds.forEach(function(d,i){
-    var a=Math.PI*2*i/n-Math.PI/2;var lx=cx+(r+20)*Math.cos(a);var ly=cy+(r+20)*Math.sin(a);
+    var a=Math.PI*2*i/n-Math.PI/2;var lx=cx+(r+22)*Math.cos(a);var ly=cy+(r+22)*Math.sin(a);
     var anc=Math.abs(Math.cos(a))<0.1?'middle':Math.cos(a)>0?'start':'end';
-    out+='<text x="'+lx.toFixed(1)+'" y="'+(ly+4).toFixed(1)+'" text-anchor="'+anc+'" font-size="10" fill="'+C.gr+'" font-weight="500">'+d.name+'</text>';
+    out+='<text x="'+lx.toFixed(1)+'" y="'+(ly+4).toFixed(1)+'" text-anchor="'+anc+'" font-size="9.5" fill="'+C.gr+'" font-weight="500">'+d.name+'</text>';
     out+='<text x="'+lx.toFixed(1)+'" y="'+(ly+16).toFixed(1)+'" text-anchor="'+anc+'" font-size="10" fill="'+C.dk+'" font-weight="600">'+d.score+'%</text>';
   });
-  var cx=170,cy=145,r=95,n=ds.length;var out='';
+  return'<svg viewBox="0 0 340 300" width="100%">'+out+'</svg>'
 }
 
 function pieSVG(lb){
-  if(!lb.length)return'<div class="chart-empty">Enter leakage estimates to see breakdown</div>';
+  if(!lb.length)return'<div class="chart-empty">Enter value-at-stake estimates to see breakdown</div>';
   var total=lb.reduce(function(s,x){return s+x.v},0);var cx=110,cy=100,R=80,ir=50;var out='';var startA=-Math.PI/2;
   lb.forEach(function(item){
     var sweep=item.v/total*Math.PI*2;var endA=startA+sweep;var large=sweep>Math.PI?1:0;
@@ -263,23 +305,48 @@ function pieSVG(lb){
   });
   out+='<text x="'+cx+'" y="'+(cy-3)+'" text-anchor="middle" font-size="16" font-weight="700" fill="'+C.dk+'">'+fR(total)+'</text>';
   out+='<text x="'+cx+'" y="'+(cy+12)+'" text-anchor="middle" font-size="9" fill="'+C.gr+'">Total</text>';
-  var legend=lb.map(function(item){return'<div class="pie-legend-item"><div class="pie-legend-dot" style="background:'+item.c+';width:10px;height:10px;border-radius:3px;display:inline-block"></div> '+item.n+': '+fR(item.v)+'</div>'}).join('');
+  var legend=lb.map(function(item){return'<div class="pie-legend-item"><div style="background:'+item.c+';width:10px;height:10px;border-radius:3px;display:inline-block"></div> '+item.n+': '+fR(item.v)+'</div>'}).join('');
   return'<svg viewBox="0 0 220 200" width="100%" style="max-width:240px;margin:0 auto;display:block">'+out+'</svg><div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;justify-content:center;font-size:11px;color:'+C.gr+'">'+legend+'</div>'
+}
+
+function journeyHTML(mat){
+  var cur=stageIdx(mat);
+  var out='<div class="card"><h3 contenteditable="true">Maturity journey</h3><div class="journey">';
+  STAGES.forEach(function(st,i){
+    var active=i===cur;
+    out+='<div class="jstage'+(active?' active':'')+'" style="border-color:'+(active?st.color:C.wa)+'"><h4 style="color:'+st.color+'">'+st.name+'</h4><ul>';
+    st.bullets.forEach(function(b){out+='<li>'+b+'</li>'});
+    out+='</ul>'+(active?'<div class="jtag" style="background:'+st.color+'">YOU ARE HERE</div>':'')+'</div>';
+  });
+  out+='</div></div>';
+  return out;
 }
 
 function printScoresHTML(m){
   var rows='';
   S.domains.forEach(function(d,di){
     var ds=m.ds[di];
-    rows+='<tr class="dom-row"><td colspan="2">'+d.name+'</td><td></td><td>'+ds.score+'%</td><td></td></tr>';
+    rows+='<tr class="dom-row"><td colspan="2">'+d.name+' ('+d.weight+'% weight)</td><td></td><td>'+ds.score+'%</td><td></td></tr>';
     d.dims.forEach(function(dim){
-      var dotColor=dim.sc>0?sCol(dim.sc):C.wa;
       var dots='';for(var n=1;n<=5;n++){var c=dim.sc>=n?sCol(n):C.wa;dots+='<span class="score-dot" style="background:'+c+';margin-right:2px">'+n+'</span> '}
       var lkStr=dim.lk>0?'<span class="lk-val">'+fR(dim.lk)+'</span>':'-';
-      rows+='<tr><td style="padding-left:20px">'+dim.name+'</td><td style="text-align:center">'+dim.w+'</td><td>'+dots+'</td><td style="text-align:center">'+(dim.sc||'-')+'</td><td style="text-align:right">'+lkStr+'</td></tr>';
+      rows+='<tr><td style="padding-left:20px">'+dim.name+'</td><td></td><td>'+dots+'</td><td style="text-align:center">'+(dim.sc||'-')+'</td><td style="text-align:right">'+lkStr+'</td></tr>';
     });
   });
-  return'<div class="print-page-break print-scores"><div class="p2-head"><span>'+S.companyTag+' | Detailed Scoring Matrix</span><small>'+(S.client||'Client')+'  |  '+S.date+'</small></div><table><thead><tr><th style="width:35%">Dimension</th><th style="width:8%;text-align:center">Weight</th><th style="width:25%">Score</th><th style="width:12%;text-align:center">Value</th><th style="width:20%;text-align:right">Est. Leakage (R)</th></tr></thead><tbody>'+rows+'</tbody></table><div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;background:'+C.fl+';padding:10px 16px;border-radius:8px"><span style="font-size:12px;font-weight:600">Total estimated annual leakage</span><span style="font-size:18px;font-weight:700;color:'+C.fu+';font-family:DM Serif Display,serif">'+fR(m.tl)+'</span></div><div style="margin-top:8px;display:flex;gap:16px;font-size:9px;color:'+C.gr+'"><span><span class="score-dot" style="background:'+C.fu+'">1</span> Ad Hoc</span><span><span class="score-dot" style="background:'+C.am+'">2</span> Emerging</span><span><span class="score-dot" style="background:'+C.yl+'">3</span> Defined</span><span><span class="score-dot" style="background:'+C.gl+'">4</span> Managed</span><span><span class="score-dot" style="background:'+C.gm+'">5</span> Optimised</span></div></div>'
+  return'<div class="print-page-break print-scores"><div class="p2-head"><span>'+S.companyTag+' | Detailed Scoring Matrix</span><small>'+(S.client||'Client')+'  |  '+S.date+'</small></div><table><thead><tr><th style="width:38%">Dimension</th><th style="width:5%"></th><th style="width:25%">Score</th><th style="width:12%;text-align:center">Value</th><th style="width:20%;text-align:right">Value at stake (R)</th></tr></thead><tbody>'+rows+'</tbody></table><div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;background:'+C.fl+';padding:10px 16px;border-radius:8px"><span style="font-size:12px;font-weight:600">Total estimated value at stake</span><span style="font-size:18px;font-weight:700;color:'+C.fu+';font-family:DM Serif Display,serif">'+fR(m.tl)+'</span></div><div style="margin-top:8px;display:flex;gap:16px;font-size:9px;color:'+C.gr+'"><span><span class="score-dot" style="background:'+C.fu+'">1</span> Emerging</span><span><span class="score-dot" style="background:'+C.am+'">2</span> Developing</span><span><span class="score-dot" style="background:'+C.yl+'">3</span> Scaling</span><span><span class="score-dot" style="background:'+C.gl+'">4</span> Scaling+</span><span><span class="score-dot" style="background:'+C.gm+'">5</span> Optimised</span></div></div>'
+}
+
+function printInsightsHTML(){
+  var ins=S.insights;
+  function ul(arr){return'<ul>'+arr.filter(function(x){return x.trim()}).map(function(x){return'<li>'+x+'</li>'}).join('')+'</ul>'}
+  return'<div class="print-page-break print-insights"><div class="p2-head"><span>'+S.companyTag+' | Qualitative Insights &amp; Recommendations</span><small>'+(S.client||'Client')+'  |  '+S.date+'</small></div>'
+  +'<h4>Executive summary</h4><p>'+(ins.summary||'-')+'</p>'
+  +'<h4>Key strengths</h4>'+ul(ins.strengths)
+  +'<h4>Key risks &amp; gaps</h4>'+ul(ins.risks)
+  +'<h4>Quick wins (0-3 months)</h4>'+ul(ins.quickWins)
+  +'<h4>Medium-term actions (3-9 months)</h4>'+ul(ins.midTerm)
+  +'<h4>Strategic priorities (9+ months)</h4>'+ul(ins.strategic)
+  +'</div>';
 }
 
 function render(){
@@ -289,22 +356,21 @@ function render(){
 
   var h='<div class="hdr"><div class="hdr-left"><div class="logo-area">'+logoHTML+'<div><div class="eyebrow" contenteditable="true" id="compTag">'+S.companyTag+'</div><h1 contenteditable="true" id="dashTitle">'+S.dashTitle+'</h1></div></div></div><div class="hdr-right">'+logoBtn+'<div><input class="hdr-input" type="text" value="'+S.client+'" placeholder="Enter client name" id="ciInput"><div class="hdr-label">Client</div></div><div><input class="hdr-input" type="date" value="'+S.date+'" id="diInput" style="font-size:12px"><div class="hdr-label">Report date</div></div></div></div>';
 
-  var tb='<div class="toolbar"><div class="tabs"><button class="tab '+(S.tab==='dashboard'?'on':'')+'" onclick="W.st(\'dashboard\')">Dashboard</button><button class="tab '+(S.tab==='scores'?'on':'')+'" onclick="W.st(\'scores\')">Score input</button><button class="tab '+(S.tab==='leakage'?'on':'')+'" onclick="W.st(\'leakage\')">Leakage detail</button></div><div class="btns"><button class="btn btn-r" onclick="W.reset()">Reset all</button><button class="btn btn-s" onclick="W.sample()">Load sample</button><button class="btn btn-p" onclick="W.pdf()">Export PDF</button></div></div>';
+  var tb='<div class="toolbar"><div class="tabs"><button class="tab '+(S.tab==='dashboard'?'on':'')+'" onclick="W.st(\'dashboard\')">Dashboard</button><button class="tab '+(S.tab==='scores'?'on':'')+'" onclick="W.st(\'scores\')">Score input</button><button class="tab '+(S.tab==='value'?'on':'')+'" onclick="W.st(\'value\')">Value at stake</button><button class="tab '+(S.tab==='insights'?'on':'')+'" onclick="W.st(\'insights\')">Insights & recommendations</button></div><div class="btns"><button class="btn btn-r" onclick="W.reset()">Reset all</button><button class="btn btn-s" onclick="W.sample()">Load sample</button><button class="btn btn-p" onclick="W.pdf()">Export PDF</button></div></div>';
 
   var dashBody=dashHTML(m);
-  var scoresBody=S.tab==='scores'?scoresHTML(m):'';
-  var leakBody=S.tab==='leakage'?leakHTML(m):'';
   var screenBody='';
   if(S.tab==='dashboard')screenBody=dashBody;
-  else if(S.tab==='scores')screenBody='<div class="scores-screen">'+scoresBody+'</div>';
-  else screenBody='<div class="leakage-screen">'+leakBody+'</div>';
+  else if(S.tab==='scores')screenBody='<div class="scores-screen">'+scoresHTML(m)+'</div>';
+  else if(S.tab==='value')screenBody='<div class="value-screen">'+valueHTML(m)+'</div>';
+  else screenBody='<div class="insights-screen">'+insightsHTML()+'</div>';
 
-  var printDash=S.tab!=='dashboard'?'<div style="display:none" class="print-dash">'+dashBody+'</div>':'';
   var printPage2=printScoresHTML(m);
+  var printPage3=printInsightsHTML();
 
   var foot='<div class="foot"><span contenteditable="true" id="compTag2">'+S.companyTag+'</span> &nbsp;|&nbsp; <span contenteditable="true" id="footNote">'+S.footNote+'</span> &nbsp;|&nbsp; '+(S.client||'Client Name')+' &nbsp;|&nbsp; '+S.date+'</div>';
 
-  document.getElementById('app').innerHTML=h+tb+screenBody+printPage2+foot;
+  document.getElementById('app').innerHTML=h+tb+screenBody+printPage2+printPage3+foot;
   document.getElementById('ciInput').addEventListener('input',function(e){S.client=e.target.value});
   document.getElementById('diInput').addEventListener('input',function(e){S.date=e.target.value});
   var ct=document.getElementById('compTag');if(ct)ct.addEventListener('blur',function(){S.companyTag=this.innerText});
@@ -313,45 +379,65 @@ function render(){
 }
 
 function dashHTML(m){
+  var stageName=STAGES[stageIdx(m.mat)].name;
   var kpis='<div class="kpis">';
-  [{l:'Overall maturity',v:Math.round(m.mat)+'%',c:bCol(m.mat),s:mLbl(m.mat)},{l:'Total leakage identified',v:fR(m.tl),c:C.fu,s:m.sc+' of '+m.dc+' dimensions scored'},{l:'Cost leakage',v:fR(m.cl),c:C.am,s:'Licences, tools, rework, waste'},{l:'Revenue leakage',v:fR(m.rl),c:C.fu,s:'Pricing, churn, pipeline, demand'}].forEach(function(k){
-    kpis+='<div class="kpi"><div class="kpi-l" contenteditable="true">'+k.l+'</div><div class="kpi-v" style="color:'+k.c+'">'+k.v+'</div><div class="kpi-s" contenteditable="true">'+k.s+'</div></div>';
+  [{l:'Overall maturity',v:m.mat+'%',c:sCol(Math.ceil(m.mat/20)||1),s:stageName+' stage'},{l:'Total value at stake',v:fR(m.tl),c:C.fu,s:m.sc+' of '+m.dc+' dimensions scored'},{l:'Heaviest gap area',v:m.ds.slice().sort(function(a,b){return a.score-b.score})[0].name,c:C.am,s:'Lowest scoring weighted domain'},{l:'Quick wins identified',v:m.qw.length,c:C.gm,s:'Low-scoring, high-value dimensions'}].forEach(function(k){
+    kpis+='<div class="kpi"><div class="kpi-l" contenteditable="true">'+k.l+'</div><div class="kpi-v" style="color:'+k.c+';font-size:'+(String(k.v).length>10?'18px':'28px')+'">'+k.v+'</div><div class="kpi-s" contenteditable="true">'+k.s+'</div></div>';
   });kpis+='</div>';
 
-  var charts='<div class="grid2"><div class="card"><h3 contenteditable="true">Maturity by domain</h3>'+radarSVG(m.ds)+'</div><div class="card"><h3 contenteditable="true">Leakage breakdown</h3>'+pieSVG(m.lb)+'</div></div>';
+  var journey=journeyHTML(m.mat);
 
-  var bars='<div class="grid2"><div class="card"><h3 contenteditable="true">Domain scores</h3>';
-  m.ds.forEach(function(d){bars+='<div class="dbar"><div class="dbar-n">'+d.name+'</div><div class="dbar-t"><div class="dbar-f" style="width:'+Math.max(d.score,3)+'%;background:'+bCol(d.score)+'"><span>'+d.score+'%</span></div></div></div>'});
-  bars+='</div><div class="card"><h3 contenteditable="true">Top leakage opportunities</h3>';
+  var charts='<div class="grid2"><div class="card"><h3 contenteditable="true">Maturity by dimension</h3>'+radarSVG(m.ds)+'</div><div class="card"><h3 contenteditable="true">Value-at-stake breakdown</h3>'+pieSVG(m.lb)+'</div></div>';
+
+  var bars='<div class="grid2"><div class="card"><h3 contenteditable="true">Dimension scores (weighted)</h3>';
+  m.ds.forEach(function(d){bars+='<div class="dbar"><div class="dbar-n">'+d.name+' ('+d.weight+'%)</div><div class="dbar-t"><div class="dbar-f" style="width:'+Math.max(d.score,3)+'%;background:'+d.color+'"><span>'+d.score+'%</span></div></div></div>'});
+  bars+='</div><div class="card"><h3 contenteditable="true">Top leakage / opportunity areas</h3>';
   if(m.qw.length){m.qw.forEach(function(q){bars+='<div class="opp"><div><div class="opp-n">'+q.name+'</div><div class="opp-d">'+q.domain+'</div></div><div class="opp-v">'+fR(q.lk)+'</div></div>'})}
-  else{bars+='<div class="chart-empty">Score dimensions and add leakage estimates to see opportunities</div>'}
+  else{bars+='<div class="chart-empty">Score dimensions and add value estimates to see opportunities</div>'}
   bars+='</div></div>';
 
-  var sum='<div class="sumbar"><div><div class="sum-l" contenteditable="true">Maturity level</div><div class="sum-v">'+mLbl(m.mat)+'</div></div><div><div class="sum-l" contenteditable="true">Dimensions scored</div><div class="sum-v">'+m.sc+' / '+m.dc+'</div></div><div><div class="sum-l" contenteditable="true">Quick wins identified</div><div class="sum-v">'+m.qw.length+'</div></div><div><div class="sum-l" contenteditable="true">Potential ROI on diagnostic</div><div class="sum-v">'+(m.tl>0?Math.round(m.tl/250000)+'x':'N/A')+'</div></div></div>';
-  return kpis+charts+bars+sum;
+  var sum='<div class="sumbar"><div><div class="sum-l" contenteditable="true">Maturity stage</div><div class="sum-v">'+stageName+'</div></div><div><div class="sum-l" contenteditable="true">Dimensions scored</div><div class="sum-v">'+m.sc+' / '+m.dc+'</div></div><div><div class="sum-l" contenteditable="true">Quick wins identified</div><div class="sum-v">'+m.qw.length+'</div></div><div><div class="sum-l" contenteditable="true">Total value at stake</div><div class="sum-v">'+fR(m.tl)+'</div></div></div>';
+  return kpis+journey+charts+bars+sum;
 }
 
 function scoresHTML(m){
-  var out='<div class="hint" contenteditable="true">Click the score buttons (1 to 5) for each dimension. 1 = Ad Hoc, 2 = Emerging, 3 = Defined, 4 = Managed, 5 = Optimised.</div>';
+  var out='<div class="hint" contenteditable="true">Click the score buttons (1 to 5) for each dimension. 1 = Emerging, 2 = Developing, 3 = Scaling, 4 = Scaling+, 5 = Optimised.</div>';
   S.domains.forEach(function(d,di){
     var ds=m.ds[di];
-    out+='<div class="spanel"><div class="dhdr'+(S.exp===di?' exp':'')+'" onclick="W.tog('+di+')"><span class="dhdr-t">'+d.name+'</span><span class="dhdr-s">'+ds.score+'% maturity</span></div>';
-    if(S.exp===di){out+='<div class="dbody">';d.dims.forEach(function(dim,dimi){
-      out+='<div class="drow"><div class="drow-n">'+dim.name+'</div><div class="drow-w">w:'+dim.w+'</div><div class="sbtn">';
+    out+='<div class="spanel"><div class="dhdr'+(S.exp===di?' exp':'')+'" onclick="W.tog('+di+')"><span class="dhdr-t">'+d.name+'<span class="dhdr-w">'+d.weight+'% weight</span></span><span class="dhdr-s">'+ds.score+'%</span></div>';
+    if(S.exp===di){out+='<div class="dhdr-desc">'+d.desc+'</div><div class="dbody">';d.dims.forEach(function(dim,dimi){
+      out+='<div class="drow"><div class="drow-n">'+dim.name+'</div><div class="sbtn">';
       [1,2,3,4,5].forEach(function(n){out+='<button class="sb" style="background:'+(dim.sc>=n?sCol(n):C.wa)+';color:'+(dim.sc>=n?C.wh:C.gr)+'" onclick="W.ss('+di+','+dimi+','+n+')">'+n+'</button>'});
       out+='</div></div>'});out+='</div>'}out+='</div>'});
   return out;
 }
 
-function leakHTML(m){
-  var out='<div class="hint" contenteditable="true">Enter estimated annual leakage in rands for each dimension. Leave at 0 if not applicable.</div>';
+function valueHTML(m){
+  var out='<div class="hint" contenteditable="true">Enter estimated annual value at stake (rands) for each dimension - the revenue or cost impact of closing the gap. Leave at 0 if not applicable.</div>';
   S.domains.forEach(function(d,di){
-    if(d.type==='indirect'){out+='<div class="indir">'+d.name+' : leakage is indirect (captured through other domains)</div>';return}
     var dt=d.dims.reduce(function(s,x){return s+x.lk},0);
     out+='<div class="ldom"><div class="ldh"><span class="ldh-n">'+d.name+'</span><span class="ldh-t">'+fR(dt)+'</span></div>';
     d.dims.forEach(function(dim,dimi){out+='<div class="lrow"><div class="lrow-n">'+dim.name+'</div><div class="lrow-s">Score: '+(dim.sc||'-')+'/5</div><div style="display:flex;align-items:center;gap:4px"><span style="font-size:12px;color:var(--gr)">R</span><input type="number" class="linp" value="'+(dim.lk||'')+'" placeholder="0" onchange="W.sl('+di+','+dimi+',this.value)" onfocus="this.select()"></div></div>'});
     out+='</div>'});
-  out+='<div class="ltot"><span class="ltot-l" contenteditable="true">Total estimated annual leakage</span><span class="ltot-v">'+fR(m.tl)+'</span></div>';
+  out+='<div class="ltot"><span class="ltot-l" contenteditable="true">Total estimated value at stake</span><span class="ltot-v">'+fR(m.tl)+'</span></div>';
+  return out;
+}
+
+function insListHTML(section,label,items){
+  var out='<div class="ins-card"><h3>'+label+'</h3>';
+  items.forEach(function(item,idx){
+    out+='<div class="ins-list-item"><div class="ili-text" contenteditable="true" onblur="W.insEdit(\''+section+'\','+idx+',this.innerText)">'+item+'</div><button class="ins-rm" onclick="W.insRemove(\''+section+'\','+idx+')">✕</button></div>';
+  });
+  out+='<button class="ins-add" onclick="W.insAdd(\''+section+'\')">+ Add item</button></div>';
+  return out;
+}
+
+function insightsHTML(){
+  var ins=S.insights;
+  var out='<div class="hint" contenteditable="true">Capture the qualitative narrative behind the scores - this section is included in the exported report alongside the dashboard and scoring matrix.</div>';
+  out+='<div class="ins-card"><h3>Executive summary</h3><div class="ins-sub">A short narrative overview of where the organisation stands and why.</div><div class="ins-summary" contenteditable="true" onblur="W.insSummary(this.innerText)">'+(ins.summary||'Click to add a summary of the organisation\'s current AI maturity, key themes, and overall trajectory...')+'</div></div>';
+  out+='<div class="ins-grid">'+insListHTML('strengths','Key strengths',ins.strengths)+insListHTML('risks','Key risks & gaps',ins.risks)+'</div>';
+  out+='<div class="ins-grid">'+insListHTML('quickWins','Quick wins (0-3 months)',ins.quickWins)+insListHTML('midTerm','Medium-term (3-9 months)',ins.midTerm)+insListHTML('strategic','Strategic (9+ months)',ins.strategic)+'</div>';
   return out;
 }
 
@@ -360,11 +446,23 @@ window.W={
   tog:function(i){S.exp=S.exp===i?null:i;render()},
   ss:function(di,dimi,v){S.domains[di].dims[dimi].sc=v;render()},
   sl:function(di,dimi,v){S.domains[di].dims[dimi].lk=Number(v)||0;render()},
-  reset:function(){if(!confirm('Reset all scores and leakage estimates to zero?'))return;S.domains.forEach(function(d){d.dims.forEach(function(x){x.sc=0;x.lk=0})});S.exp=null;render()},
+  insSummary:function(v){S.insights.summary=v},
+  insAdd:function(section){S.insights[section].push('');render();},
+  insEdit:function(section,idx,v){S.insights[section][idx]=v;},
+  insRemove:function(section,idx){S.insights[section].splice(idx,1);if(S.insights[section].length===0)S.insights[section].push('');render();},
+  reset:function(){if(!confirm('Reset all scores, values and insights?'))return;S.domains.forEach(function(d){d.dims.forEach(function(x){x.sc=0;x.lk=0})});S.exp=null;S.insights={summary:'',strengths:[''],risks:[''],quickWins:[''],midTerm:[''],strategic:['']};render()},
   sample:function(){
-    var sc=[[2,1,2,2],[1,2,1,1],[3,2,2,2,3],[2,2,1,3],[1,2,2,2,1],[2,1,2,1],[2,2,3,2]];
-    var lk=[[450000,280000,620000,380000],[0,0,0,0],[180000,890000,540000,720000,210000],[480000,350000,1200000,0],[1800000,1400000,960000,580000,720000],[0,0,0,0],[0,0,0,0]];
+    var sc=[[3,2,3,2],[2,3,2,2],[2,2,3,1],[3,2,2,2],[1,2,2],[2,1,1]];
+    var lk=[[620000,380000,540000,290000],[410000,260000,720000,180000],[350000,590000,220000,0],[0,0,0,0],[480000,650000,0],[210000,140000,0]];
     S.domains.forEach(function(d,i){d.dims.forEach(function(x,j){x.sc=sc[i][j];x.lk=lk[i][j]})});
+    S.insights={
+      summary:'Sample Corp shows solid early traction with AI tools inside individual teams, but adoption has not yet translated into standardised workflows or enterprise-wide governance. Momentum exists - the priority now is consolidating it into measurable, repeatable value.',
+      strengths:['Strong grassroots tool adoption within customer service and marketing','Executive sponsor identified for the AI programme','Early pilots in Process & Workflows showing promising cycle-time gains'],
+      risks:['No consistent KPI framework to prove ROI to the board','Governance and data standards lag behind tool rollout speed','Customer-facing use cases remain largely unexplored'],
+      quickWins:['Stand up a lightweight AI governance checklist for new tools','Define 3-5 KPIs per function and start baseline tracking','Run a training session for frontline teams on approved AI tools'],
+      midTerm:['Consolidate duplicate AI tools into a shortlist of approved platforms','Build a monthly AI value-realisation report for leadership','Pilot one customer-facing AI use case with clear success metrics'],
+      strategic:['Embed AI adoption targets into functional leadership scorecards','Move from pilot governance to enterprise-wide AI policy','Build a dedicated ROI attribution model tied to finance reporting']
+    };
     S.client='Sample Corp (Pty) Ltd';S.tab='dashboard';render()},
   pdf:function(){S.tab='dashboard';render();setTimeout(function(){window.print()},400)}
 };
